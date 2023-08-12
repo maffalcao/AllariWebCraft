@@ -6,34 +6,38 @@
     <title>Web Craft</title>
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column vh-100 m-0 p-0">
 
-    <header class="bg-primary text-white text-center">
+    <header class="bg-primary text-white text-center py-2">
         <div class="text-center">
             <p id="clock" class="h2"></p>
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #333;">
+        <div class="container d-flex justify-content-center">
+            <span class="navbar-brand mb-0 h1">
+                Marco Antonio Flores Falcão
+            </span>
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 flex-grow-1">
         <div class="row">
+
             <div class="col-md-3">
-                <div class="bg-light p-3">
-                    <p>Left Content</p>
+                <div class="bg-dark p-3">
+                    <div class="d-flex justify-content-between text-white">
+                        <div class="pe-3">                            
+                            <div id="mouseX" class="h2">0</div>
+                        </div>
+                        <div>                            
+                            <div id="mouseY" class="h2">0</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="bg-light p-3">
                     <p>Main Content</p>
@@ -41,14 +45,37 @@
             </div>
             <div class="col-md-3">
                 <div class="bg-light p-3">
-                    <p>Right Content</p>
+                    <div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://res.cloudinary.com/soundbetter/image/upload/c_fill,f_auto,g_face:auto,h_533,q_auto:eco,w_533/v1642753150/assets/photos/480990/Allari_logo.png" class="d-block w-100" alt="Image 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://media.licdn.com/dms/image/C4E0BAQG2sxDX7Y_hGw/company-logo_200_200/0/1677607477423?e=2147483647&v=beta&t=csRqIgliVl7oZZUxdSiB77D7A5QCNCOJRS3A8QHiaTA" class="d-block w-100" alt="Image 2">
+                            </div>
+                            <!-- Adicione mais itens de imagem conforme necessário -->
+                        </div>
+                        <a class="carousel-control-prev" href="#imageSlider" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#imageSlider" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#imageSlider" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#imageSlider" data-bs-slide-to="1"></li>
+                            <!-- Adicione mais pontos conforme necessário -->
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-light text-center py-3">
-        <p>Footer</p>
+    <footer class="text-center py-1" style="background-color: #ddd;">
+        <p><a href="https://allari.com/">Allari link page</a></p>
     </footer>
 
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -71,6 +98,17 @@
         $(document).ready(function () {
             updateClock();
             setInterval(updateClock, 1000);
+
+            const $mouseXElement = $('#mouseX');
+            const $mouseYElement = $('#mouseY');
+
+            $(document).mousemove(function (event) {
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                $mouseXElement.text(mouseX);
+                $mouseYElement.text(mouseY);
+            });
         });
     </script>
 </body>
