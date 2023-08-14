@@ -1,1 +1,97 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Craft</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">    
+</head>
+<body class="d-flex flex-column vh-100 m-0 p-0">
+
+    <header class="bg-primary text-white text-center py-2">
+        <div class="text-center">
+            <p id="clock" class="h2"></p>
+        </div>
+    </header>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark dark-charcoal-bg">
+        <div class="container d-flex justify-content-center">
+            <span class="navbar-brand mb-0 h1">
+                Marco Antonio Flores Falcão
+            </span>
+        </div>
+    </nav>
+
+    <div class="container mt-4 flex-grow-1">
+        <div class="row">
+            <!-- Content Right -->
+            <div class="col-md-3">
+                <div class="bg-dark p-3">
+                    <div class="d-flex justify-content-between text-white">
+                        <div class="pe-3">                            
+                            <div id="mouseX" class="h2">0</div>
+                        </div>
+                        <div>                            
+                            <div id="mouseY" class="h2">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-6">
+                <div class="bg-light p-3">                    
+                    <div>
+                        <p>Create a web application using .NET MVC. The main page elements should be:</p>
+
+                        <ul>
+                            <li><strong>Header:</strong> Digital clock displaying the current time</li>
+                            <li><strong>Navigation Bar:</strong> Author's full name</li>
+                            <li><strong>Main Content:</strong> Project summary, Button for listing items</li>
+                            <li><strong>Content Right:</strong> Image slider with navigation buttons</li>
+                            <li><strong>Content Left:</strong> Indicators for X and Y mouse positions</li>
+                            <li><strong>Footer:</strong> Link to Allari website</li>
+                        </ul>
+                    </div>
+                    <div class="bg-light p-3">
+                        <button id="generateListButton" class="btn btn-primary btn-lg">Generate List</button>
+                        <hr />
+                        <div id="generatedList"></div>
+                    </div>
+                                    
+                </div>
+            </div>
+
+            <!-- Content Left -->
+            <div class="col-md-3">
+                <div class="bg-light p-3">
+                    <div id="dynamicImageSlider" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                        </div>
+                        <a class="carousel-control-prev" href="#dynamicImageSlider" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#dynamicImageSlider" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>                    
+                        <ol class="carousel-indicators"></ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-1 gainsboro-bg">
+        <p><a href="https://allari.com/">Allari link page</a></p>
+    </footer>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/js/site.js"></script>    
+</body>
+</html>

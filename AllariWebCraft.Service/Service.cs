@@ -4,12 +4,8 @@ namespace AllariWebCraft.Service;
 
 public class Service : IService
 {
-    public List<string> GetItems()
-    {
-        var randomNumber = new Random();
-        return GenerateRandomCityNames(randomNumber.Next(1, 20));
-    }
-
+    public List<string> GetItems() =>
+        GenerateRandomCityNames(6);
     private List<string> GenerateRandomCityNames(int size)
     {
         var faker = new Faker();

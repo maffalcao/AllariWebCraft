@@ -1,4 +1,9 @@
+using AllariWebCraft.Service;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Adicione a injeção de dependência do IService e Service
+builder.Services.AddScoped<IService, Service>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -15,7 +20,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseDefaultFiles();
+
 
 app.UseRouting();
 

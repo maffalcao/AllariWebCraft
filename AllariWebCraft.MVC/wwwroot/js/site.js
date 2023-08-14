@@ -76,7 +76,7 @@ $(document).ready(function () {
     // Generate list on button click using AJAX
     $("#generateListButton").click(function () {
         $.ajax({
-            url: "url_to_your_backend_endpoint",
+            url: "/api/list",
             method: "GET",
             success: function (data) {
                 if (Array.isArray(data)) {
