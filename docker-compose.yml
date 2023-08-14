@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  alleriwebcraft.mvc:
+    build:
+      context: .
+      dockerfile: AlleriWebCraft.Mvc/Dockerfile
+    ports:
+      - "12345:80"
+    depends_on:
+      - alleriwebcraft.service
+
+  alleriwebcraft.service:
+    build:
+      context: .
+      dockerfile: AlleriWebCraft.Service/Dockerfile
