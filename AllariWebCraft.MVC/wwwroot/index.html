@@ -5,39 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Craft</title>
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            animation-name: ripple;
-            animation-duration: 1s;
-            opacity: 0;
-            border-radius: 50%;
-        }
-
-        @keyframes ripple {
-        
-        0% {
-            opacity: .4;
-            transform: scale(0);
-            background: #000;
-        }
-        
-        100% {
-            opacity: 0;
-            transform: scale(100);
-            background: #000;
-        }
-        }
-    </style>
-    
+    <link href="/css/site.css" rel="stylesheet">    
 </head>
 <body class="d-flex flex-column vh-100 m-0 p-0">
 
@@ -47,7 +15,8 @@
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #333;">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark dark-charcoal-bg">
         <div class="container d-flex justify-content-center">
             <span class="navbar-brand mb-0 h1">
                 Marco Antonio Flores Falcão
@@ -57,7 +26,7 @@
 
     <div class="container mt-4 flex-grow-1">
         <div class="row">
-
+            <!-- Content Right -->
             <div class="col-md-3">
                 <div class="bg-dark p-3">
                     <div class="d-flex justify-content-between text-white">
@@ -71,10 +40,9 @@
                 </div>
             </div>
 
+            <!-- Main Content -->
             <div class="col-md-6">
-
-                <div class="bg-light p-3">
-                    
+                <div class="bg-light p-3">                    
                     <div>
                         <p>Create a web application using .NET MVC. The main page elements should be:</p>
 
@@ -94,6 +62,8 @@
                                     
                 </div>
             </div>
+
+            <!-- Content Left -->
             <div class="col-md-3">
                 <div class="bg-light p-3">
                     <div id="dynamicImageSlider" class="carousel slide" data-bs-ride="carousel">
@@ -106,130 +76,21 @@
                         <a class="carousel-control-next" href="#dynamicImageSlider" role="button" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
-                        </a>
-                    
-                        <ol class="carousel-indicators">
-                        </ol>
+                        </a>                    
+                        <ol class="carousel-indicators"></ol>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="text-center py-1" style="background-color: #ddd;">
+    <!-- Footer -->
+    <footer class="text-center py-1 gainsboro-bg">
         <p><a href="https://allari.com/">Allari link page</a></p>
     </footer>
 
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/jquery/dist/jquery.js"></script>
-    <script>
-        function updateClock() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            var timeString = hours + ':' + minutes + ':' + seconds;
-            $('#clock').text(timeString);
-        }
-
-       function createCarouselItems() {
-            var imageUrls = [
-                "/images/img1.png",
-                "/images/img2.png",
-                "/images/img3.png",
-                "/images/img4.png",
-                "/images/img5.png",
-                "/images/img6.png"
-            ];
-
-            var carouselInner = $("#dynamicImageSlider .carousel-inner");
-            var carouselIndicators = $("#dynamicImageSlider .carousel-indicators");
-
-            for (var i = 0; i < imageUrls.length; i++) {
-                var carouselItem = $("<div>").addClass("carousel-item");
-
-                if (i === 0) {
-                    carouselItem.addClass("active");
-                }
-
-                var img = $("<img>").addClass("d-block w-100").attr("src", imageUrls[i]).attr("alt", "Image " + (i + 1));
-
-                carouselItem.append(img);
-                carouselInner.append(carouselItem);
-
-                // Adicionar indicadores de navegação
-                var indicator = $("<li>").attr("data-bs-target", "#dynamicImageSlider").attr("data-bs-slide-to", i.toString());
-
-                if (i === 0) {
-                    indicator.addClass("active");
-                }
-
-                carouselIndicators.append(indicator);
-            }
-        }
-
-        $(document).ready(function () {            
-
-            createCarouselItems();
-            updateClock();
-            setInterval(updateClock, 1000);
-
-            const $mouseXElement = $('#mouseX');
-            const $mouseYElement = $('#mouseY');
-
-            $(document).mousemove(function (event) {
-                const mouseX = event.clientX;
-                const mouseY = event.clientY;
-
-                $mouseXElement.text(mouseX);
-                $mouseYElement.text(mouseY);
-            });
-
-            var className = 'btn';
-            var ripple = $('<div class="ripple"></div>');
-
-            $(document).on('mousedown', function (e) {
-                if ($(e.target).hasClass(className)) {
-                    var offsetX = e.offsetX;
-                    var offsetY = e.offsetY;
-
-                    ripple.css({
-                        top: offsetY + 'px',
-                        left: offsetX + 'px'
-                    });
-
-                    $(e.target).append(ripple);
-
-                    setTimeout(function () {
-                        ripple.remove();
-                    }, 600);
-                }
-            });
-
-            $("#generateListButton").click(function () {
-                $.ajax({
-                    url: "url_to_your_backend_endpoint",
-                    method: "GET",
-                    success: function (data) {
-                        if (Array.isArray(data)) {
-                            var itemsList = "<ul>";
-                            data.forEach(function (item) {
-                                itemsList += "<li>" + item + "</li>";
-                            });
-                            itemsList += "</ul>";
-                            $("#generatedList").html(itemsList);
-                        }
-                    }
-                });
-            });
-
-        });
-    </script>
+    <script src="/js/site.js"></script>    
 </body>
 </html>
